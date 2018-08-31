@@ -1,6 +1,6 @@
-# y
+# 
 
-> my-first
+> my-first-mpvue
 
 ## Build Setup
 
