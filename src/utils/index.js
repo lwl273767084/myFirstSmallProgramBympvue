@@ -21,8 +21,12 @@ export function formatTime(date) {
 const baseHost = 'https://www.easy-mock.com/mock/5b8cea0cb4f2405353a0409d/mpvueShop'
 const baseUrl = {
     banner: baseHost + '/index/banner', // 首页轮播图
-    brandList: baseHost + '/index/brandList', // 首页展示商品
-    channel:baseHost + '/index/channel', // 快捷入口
+    brand: baseHost + '/index/brandList', // 首页展示商品
+    channel: baseHost + '/index/channel', // 快捷入口
+    newGoods: baseHost + '/index/newGoods', // 新品首发
+    hotGoods: baseHost + '/index/hotGoods', // 好物精选
+    topicList: baseHost + '/index/topicList', // 专题精选
+    newCategoryList: baseHost + '/index/newCategoryList', // 好物精选
 }
 
 //请求封装
@@ -58,6 +62,24 @@ export function get(url, data) {
 }
 export function post(url, data) {
     return request(url, 'POST', data)
+}
+
+export function toLogin() {
+    const userInfo = wx.getStorageSync('userInfo');
+    if (!userInfo) {
+        wx.navigateTo({
+            url: "/pages/login/main"
+        });
+    } else {
+        return true;
+    }
+}
+
+export function login() {
+    const userInfo = wx.getStorageSync('userInfo');
+    if (userInfo) {
+        return userInfo;
+    }
 }
 
 export default {
